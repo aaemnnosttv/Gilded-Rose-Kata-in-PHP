@@ -127,7 +127,7 @@ describe('Gilded Rose', function () {
 
                 $item->tick();
 
-                expect($item->quality)->toBe(10);
+                expect($item->quality)->toBe(80);
                 expect($item->sellIn)->toBe(5);
             });
 
@@ -136,7 +136,7 @@ describe('Gilded Rose', function () {
 
                 $item->tick();
 
-                expect($item->quality)->toBe(10);
+                expect($item->quality)->toBe(80);
                 expect($item->sellIn)->toBe(5);
             });
 
@@ -145,7 +145,7 @@ describe('Gilded Rose', function () {
 
                 $item->tick();
 
-                expect($item->quality)->toBe(10);
+                expect($item->quality)->toBe(80);
                 expect($item->sellIn)->toBe(-1);
             });
 
