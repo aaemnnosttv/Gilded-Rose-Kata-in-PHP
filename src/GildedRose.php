@@ -6,7 +6,7 @@ class GildedRose
 {
     public $name;
 
-    public $quality;
+    protected $quality;
 
     public $sellIn;
 
@@ -41,6 +41,21 @@ class GildedRose
         return new static($name, $quality, $sellIn);
     }
 
+    public function __get( $name )
+    {
+        if ( $name == 'quality') {
+            if ( $this->quality < static::QUALITY_MIN ) {
+                return static::QUALITY_MIN;
+            }
+
+            if ( $this->quality > static::QUALITY_MAX ) {
+                return static::QUALITY_MAX;
+            }
+        }
+
+        return $this->$name;
+    }
+
     /**
      * Adjust the item's quality
      */
@@ -50,14 +65,6 @@ class GildedRose
 
         if ( $this->sellIn < 1 ) {
             $this->quality += $this->qualityStep;
-        }
-
-        if ( $this->quality < static::QUALITY_MIN ) {
-            $this->quality = static::QUALITY_MIN;
-        }
-
-        if ( $this->quality > static::QUALITY_MAX ) {
-            $this->quality = static::QUALITY_MAX;
         }
     }
 
